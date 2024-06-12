@@ -1,0 +1,59 @@
+{
+    "stationId": "PS125",
+    "name": "Midtown Parking Station",
+    "location": {
+        "address": "789 Maple St, Midtown, CityName",
+        "latitude": 40.713776,
+        "longitude": -74.012974
+    },
+    "capacity": {
+        "totalSpots": 250,
+        "availableSpots": 50
+    },
+    "rates": {
+        "hourlyRate": 2.75,
+        "dailyRate": 22.00,
+        "monthlyRate": 175.00
+    },
+    "operatingHours": {
+        "monday": {
+            "open": "08:00",
+            "close": "22:00"
+        },
+        "tuesday": {
+            "open": "08:00",
+            "close": "22:00"
+        },
+        "wednesday": {
+            "open": "08:00",
+            "close": "22:00"
+        },
+        "thursday": {
+            "open": "08:00",
+            "close": "22:00"
+        },
+        "friday": {
+            "open": "08:00",
+            "close": "22:00"
+        },
+        "saturday": {
+            "open": "10:00",
+            "close": "20:00"
+        },
+        "sunday": {
+            "open": "10:00",
+            "close": "18:00"
+        }
+    },
+    "amenities": {
+        "hasEVCharging": true,
+        "hasHandicapAccess": true,
+        "hasSecurityCameras": true,
+        "acceptsCreditCard": true
+    },
+    "contactInfo": {
+        "phone": "+1-234-567-890",
+        "email": "contact@midtownparking.com"
+    },
+    "lastUpdated": "2024-06-07T10:15:30Z"
+}
