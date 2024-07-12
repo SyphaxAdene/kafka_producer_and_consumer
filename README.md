@@ -148,7 +148,9 @@ Here is an example of a JSON file that can be used with this project:
 }
 ```
 .gitignore
+
 The .gitignore file is set up to ignore the following files and directories:
 
 /kafka_env
+
 config.json
