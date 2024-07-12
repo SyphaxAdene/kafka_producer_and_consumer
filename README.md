@@ -150,7 +150,5 @@ Here is an example of a JSON file that can be used with this project:
 .gitignore
 The .gitignore file is set up to ignore the following files and directories:
 
-arduino
-Copier le code
 /kafka_env
 config.json
