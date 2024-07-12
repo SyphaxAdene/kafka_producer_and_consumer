@@ -8,8 +8,8 @@ This project provides a Kafka producer and consumer implementation for handling 
 
 kafka_project/
 ├── data/
-│ └── [subfolder_name]/
-│ └── *.json
+│   └── [subfolder_name]/
+│       └── *.json
 ├── kafka_consumer.py
 ├── kafka_producer.py
 ├── config.json
@@ -17,8 +17,6 @@ kafka_project/
 ├── requirements.txt
 └── .gitignore
 
-csharp
-Copier le code
 
 ## Configuration
 
@@ -148,7 +146,7 @@ Here is an example of a JSON file that can be used with this project:
     },
     "lastUpdated": "2024-07-10T09:30:00Z"
 }
-
+```
 .gitignore
 The .gitignore file is set up to ignore the following files and directories:
 
