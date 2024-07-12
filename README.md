@@ -4,18 +4,18 @@
 
 This project provides a Kafka producer and consumer implementation for handling IoT data. The producer reads JSON files containing parking station data and publishes them to a Kafka topic. The consumer subscribes to the Kafka topic and processes the received messages.
 
-## Directory Structure
+# Project Structure
 
-kafka_project/
-├── data/
-│   └── [subfolder_name]/
-│       └── *.json
-├── kafka_consumer.py
-├── kafka_producer.py
-├── config.json
-├── config.template.json
-├── requirements.txt
-└── .gitignore
+- kafka_project/
+  - data/
+    - [subfolder_name]/
+      - *.json
+  - kafka_consumer.py
+  - kafka_producer.py
+  - config.json
+  - config.template.json
+  - requirements.txt
+  - .gitignore
 
 
 ## Configuration
