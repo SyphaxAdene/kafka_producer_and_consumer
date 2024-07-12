@@ -1,48 +1,48 @@
 {
-    "stationId": "PS125",
-    "name": "Midtown Parking Station",
+    "stationId": "STATION311",
+    "name": "Convention Center West Parking",
     "location": {
-        "address": "789 Maple St, Midtown, CityName",
-        "latitude": 40.713776,
-        "longitude": -74.012974
+        "address": "9860 Universal Blvd, Orlando, FL 32819",
+        "latitude": 28.4257,
+        "longitude": -81.4709
     },
     "capacity": {
-        "totalSpots": 250,
-        "availableSpots": 50
+        "totalSpots": 2500,
+        "availableSpots": 750
     },
     "rates": {
-        "hourlyRate": 2.75,
-        "dailyRate": 22.00,
-        "monthlyRate": 175.00
+        "hourlyRate": 4.00,
+        "dailyRate": 30.00,
+        "monthlyRate": 500.00
     },
     "operatingHours": {
         "monday": {
-            "open": "08:00",
-            "close": "22:00"
+            "open": "05:00",
+            "close": "23:59"
         },
         "tuesday": {
-            "open": "08:00",
-            "close": "22:00"
+            "open": "05:00",
+            "close": "23:59"
         },
         "wednesday": {
-            "open": "08:00",
-            "close": "22:00"
+            "open": "05:00",
+            "close": "23:59"
         },
         "thursday": {
-            "open": "08:00",
-            "close": "22:00"
+            "open": "05:00",
+            "close": "23:59"
         },
         "friday": {
-            "open": "08:00",
-            "close": "22:00"
+            "open": "05:00",
+            "close": "23:59"
         },
         "saturday": {
-            "open": "10:00",
-            "close": "20:00"
+            "open": "05:00",
+            "close": "23:59"
         },
         "sunday": {
-            "open": "10:00",
-            "close": "18:00"
+            "open": "05:00",
+            "close": "23:59"
         }
     },
     "amenities": {
@@ -52,8 +52,8 @@
         "acceptsCreditCard": true
     },
     "contactInfo": {
-        "phone": "+1-234-567-890",
-        "email": "contact@midtownparking.com"
+        "phone": "+1-407-555-4321",
+        "email": "parking@occc.com"
     },
-    "lastUpdated": "2024-06-07T10:15:30Z"
+    "lastUpdated": "2024-07-10T09:30:00Z"
 }
