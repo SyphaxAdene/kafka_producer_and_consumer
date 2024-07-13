@@ -1,0 +1,59 @@
+{
+    "stationId": "STATION311",
+    "name": "Convention Center West Parking",
+    "location": {
+        "address": "9860 Universal Blvd, Orlando, FL 32819",
+        "latitude": 28.4257,
+        "longitude": -81.4709
+    },
+    "capacity": {
+        "totalSpots": 2500,
+        "availableSpots": 750
+    },
+    "rates": {
+        "hourlyRate": 4.00,
+        "dailyRate": 30.00,
+        "monthlyRate": 500.00
+    },
+    "operatingHours": {
+        "monday": {
+            "open": "05:00",
+            "close": "23:59"
+        },
+        "tuesday": {
+            "open": "05:00",
+            "close": "23:59"
+        },
+        "wednesday": {
+            "open": "05:00",
+            "close": "23:59"
+        },
+        "thursday": {
+            "open": "05:00",
+            "close": "23:59"
+        },
+        "friday": {
+            "open": "05:00",
+            "close": "23:59"
+        },
+        "saturday": {
+            "open": "05:00",
+            "close": "23:59"
+        },
+        "sunday": {
+            "open": "05:00",
+            "close": "23:59"
+        }
+    },
+    "amenities": {
+        "hasEVCharging": true,
+        "hasHandicapAccess": true,
+        "hasSecurityCameras": true,
+        "acceptsCreditCard": true
+    },
+    "contactInfo": {
+        "phone": "+1-407-555-4321",
+        "email": "parking@occc.com"
+    },
+    "lastUpdated": "2024-07-10T09:30:00Z"
+}

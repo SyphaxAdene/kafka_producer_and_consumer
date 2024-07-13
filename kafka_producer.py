@@ -1,14 +1,17 @@
-from confluent_kafka import Producer
+import os
 import json
+from confluent_kafka import Producer
 
-# Kafka configuration
-conf = {
-    'bootstrap.servers': 'SASL_SSL://pkc-4nmjv.francecentral.azure.confluent.cloud:9092',
-    'sasl.mechanisms': 'PLAIN',
-    'security.protocol': 'SASL_SSL',
-    'sasl.username': 'ZV4GHSLDIHI554G4',
-    'sasl.password': 'CubYOqIlQCX1A/hFRfDa0Ay87GciTQ93+0dZTmgz1r/XFwLNjfg2rB2RL7GzsRli'
-}
+# Load non-sensitive configuration from config file
+with open('config.json') as config_file:
+    conf = json.load(config_file)
+
+# Override with sensitive configuration from environment variables
+conf['bootstrap.servers'] = os.getenv('KAFKA_BOOTSTRAP_SERVERS', conf['bootstrap.servers'])
+conf['sasl.mechanisms'] = os.getenv('KAFKA_SASL_MECHANISMS', conf['sasl.mechanisms'])
+conf['security.protocol'] = os.getenv('KAFKA_SECURITY_PROTOCOL', conf['security.protocol'])
+conf['sasl.username'] = os.getenv('KAFKA_SASL_USERNAME', conf['sasl.username'])
+conf['sasl.password'] = os.getenv('KAFKA_SASL_PASSWORD', conf['sasl.password'])
 
 # Create Producer instance
 producer = Producer(conf)
@@ -20,70 +23,39 @@ def delivery_report(err, msg):
     else:
         print(f'Message delivered to {msg.topic()} [{msg.partition()}]')
 
-# JSON message
-message = {
-    "stationId": "PS123",
-    "name": "Downtown Parking Station",
-    "location": {
-        "address": "123 Main St, Downtown, CityName",
-        "latitude": 40.712776,
-        "longitude": -74.005974
-    },
-    "capacity": {
-        "totalSpots": 150,
-        "availableSpots": 75
-    },
-    "rates": {
-        "hourlyRate": 2.50,
-        "dailyRate": 20.00,
-        "monthlyRate": 150.00
-    },
-    "operatingHours": {
-        "monday": {
-            "open": "08:00",
-            "close": "22:00"
-        },
-        "tuesday": {
-            "open": "08:00",
-            "close": "22:00"
-        },
-        "wednesday": {
-            "open": "08:00",
-            "close": "22:00"
-        },
-        "thursday": {
-            "open": "08:00",
-            "close": "22:00"
-        },
-        "friday": {
-            "open": "08:00",
-            "close": "22:00"
-        },
-        "saturday": {
-            "open": "10:00",
-            "close": "20:00"
-        },
-        "sunday": {
-            "open": "10:00",
-            "close": "18:00"
-        }
-    },
-    "amenities": {
-        "hasEVCharging": True,
-        "hasHandicapAccess": True,
-        "hasSecurityCameras": True,
-        "acceptsCreditCard": True
-    },
-    "contactInfo": {
-        "phone": "+1-234-567-890",
-        "email": "contact@downtownparking.com"
-    },
-    "lastUpdated": "2024-06-07T10:15:30Z"
-}
+# Function to read JSON files and produce messages
+def produce_messages_from_files(data_dir):
+    for filename in os.listdir(data_dir):
+        if filename.endswith(".json"):
+            filepath = os.path.join(data_dir, filename)
+            with open(filepath) as file:
+                try:
+                    messages = json.load(file)
+                    if not isinstance(messages, list):
+                        messages = [messages]
+                    for message in messages:
+                        producer.produce(
+                            topic='iot_data_topic',
+                            key=message['stationId'],
+                            value=json.dumps(message),
+                            callback=delivery_report
+                        )
+                        producer.poll(0)
+                except json.JSONDecodeError as e:
+                    print(f"Failed to decode JSON from {filename}: {e}")
 
-# Produce the message
-producer.produce('iot_data_topic', key="01", value=json.dumps(message), callback=delivery_report)
-producer.poll(0)
-
-# Wait for any outstanding messages to be delivered
-producer.flush()
+if __name__ == '__main__':
+    if len(os.sys.argv) != 2:
+        print("Usage: python kafka_producer.py <subfolder_name>")
+        os.sys.exit(1)
+    
+    subfolder_name = os.sys.argv[1]
+    data_directory = os.path.join(os.path.dirname(__file__), 'data', subfolder_name)
+    
+    if not os.path.exists(data_directory):
+        print(f"Subfolder {subfolder_name} does not exist in the data directory.")
+        os.sys.exit(1)
+    
+    produce_messages_from_files(data_directory)
+    # Wait for any outstanding messages to be delivered
+    producer.flush()
